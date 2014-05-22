@@ -1,48 +1,63 @@
-
-<div class="snippet_view">
-
-    <div class="row">
-      <div class="col-md-9">
-        <h5>Title: </h5><%= @snippet.title %>
-      </div>
-    </div>
-</br>
-    <div class="row">
-      <div class="col-md-6">
-          <audio controls="controls">
-          Your browser does not support the <code>audio</code> element.
-          <source src="<%= @snippet.song.file %>" type="audio/wav">
-        </audio>
-      </div>
-    </div>
-</br>
-      <div class="row">
-        <div class="col-md-6">
-          <h5>Description: </h5>
-         <%= @snippet.description %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <% if @snippet.comments.present? %>
-          <h5>Comments: </h5>
-         <%= @snippet.comment.text %>
-          <% end %>
-        </div>
-      </div>
-
-</div>
-
-<br>
-
-
 <div class="row">
-  <div class="col-md-9">
-<%= link_to('Comment Snippet', new_comment_path) %> 
-</br>
-<%= link_to('New Snippet', new_snippet_path) %> -  
-<%= link_to('Edit Snippet', edit_snippet_path(@snippet)) %> - 
-<%= link_to('Delete Snippet', @snippet, :method => :delete, :confirm => 'Are you sure?') %>
+    <div class="col-md-12">
+      <div class="profile_bottom">
+        <div class="row">
+
+<ul class="snippets-list">
+  <li class="row">
+  <div class="col-md-6">
+    <h4><%= @snippet.title %></h4>
+    <p>
+    <%= @snippet.description %>
+  </p>
   </div>
+  <div class="col-md-12">
+    <div class="song_align">
+    <% if @snippet.song.present? %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= @snippet.song.title %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <audio controls="controls">
+            Your browser does not support the <code>audio</code> element.
+            <source src="<%= @snippet.song.file %>" type="audio/wav">
+          </audio>
+        </div>
+      <div>
+    <% end %>
+  </div>
+  </div>
+  
+ <li class="row">
+  <div class="col-md-6">
+    <div class="comments">
+    <% if @snippet.comments.present? %>
+      <% @snippet.comments.each do |comment| %>
+      <%= comment.text %>
+      <% end %>
+    <% end %>
+   </div>
+  </div>
+ </li>
+
+  <div class="col-xs-12 col-sm-6 col-md-8">
+      <div class="controls_buttons">
+      <% if can? :create, Snippet %>
+        <%= link_to('Edit Snippet', edit_snippet_path(snippet))  %>
+      <% end %> 
+  
+ 
+      </div>
+  </div>
+</li>
+</ul>
+
 </div>
+    <div>
+  </div>
+<div>
+
+

@@ -19,7 +19,7 @@ class SnippetsController < ApplicationController
     @snippet.song = song
     if @snippet.save
       flash[:notice] = "Created Snippet"
-      redirect_to @snippet
+      redirect_to @profile
     else
       flash[:notice] = "An error occured"
       render :new
@@ -36,7 +36,7 @@ class SnippetsController < ApplicationController
     snippet = Snippet.find(params[:id])
     authorize! :update, @snippet 
     snippet.update_attributes(params[:snippet])
-    redirect_to @snippet
+    redirect_to @profile
   end
 
   def destroy

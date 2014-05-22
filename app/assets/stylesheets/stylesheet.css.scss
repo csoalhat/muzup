@@ -248,6 +248,7 @@ body {
 .controls_buttons {
   margin-top: 20px;
   font-size: 10px;
+  float: right;
 }
 
 audio {
@@ -256,6 +257,7 @@ audio {
 
 .song_align {
   float: right;
+  margin-top: 20px;
 }
 
 /* Gerry Fixs */
@@ -274,5 +276,16 @@ audio {
   border-radius: 10px;
   float: left;
 }
+
+.comments {
+  width: 100%;
+  border: 2px white solid;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  float: left;
+}
+
+
 
 
