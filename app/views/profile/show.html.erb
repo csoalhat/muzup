@@ -1,0 +1,57 @@
+<div class="profile" style="border: 1px solid white
+">
+  <div class="row">
+      <div class="col-md-12">
+        <%= link_to "Edit My Profile", edit_profile_index_path(current_user.profile) if can?(:update, @profile ) %>
+      </br>
+        <%= link_to "Add New Snippet", new_snippet_path %>
+      </div>
+        <div class="row">
+          <div class="profile_bottom">
+            <ul class="snippets-list">
+              <div class="col-md-9">
+                <div class="profile_title">
+                  
+              </div>
+            </div>
+              
+            <div class="row">
+              <div class="col-md-6">
+                <%= image_tag(current_user.profile.photo, width: '160') %>
+            </div>
+            <div class="col-md-6">
+               <%= @profile.name %>, <%= @profile.city %>
+                <% if current_user.profile.inspirations.present? %>
+                <h5>Inspiration:</h5>
+                <%= current_user.profile.inspirations %>
+                <% end %>
+                <% if current_user.profile.instruments? %>
+                <h5>Instruments:</h5>
+                <%= current_user.profile.instruments %>
+                <% end %>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="profile_bottom">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="snippets">Snippets</h3>
+          </div>
+          <ul class="snippets-list">
+            <%= render current_user.snippets %>
+          </ul>
+        </div>
+      </div>
+    <div>
+  </div>
+<div>
+
+
+
+    
+     

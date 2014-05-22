@@ -1,0 +1,45 @@
+<li class="row">
+  <div class="col-md-4">
+    <h4><%= snippet.title %></h4>
+    <p>
+    <%= snippet.description %>
+  </p>
+  </div>
+  <div class="col-md-8">
+    <div class="song_align">
+    <% if snippet.song.present? %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= snippet.song.title %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <audio controls="controls">
+            Your browser does not support the <code>audio</code> element.
+            <source src="<%= snippet.song.file %>" type="audio/wav">
+          </audio>
+        </div>
+      <div>
+    <% end %>
+  </div>
+  </div>
+  
+  <div class="col-xs-12 col-sm-6 col-md-8">
+    <% if snippet.comments.present? %>
+      <% snippet.comments.each do |comment| %>
+      <%= comment.text %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-8">
+      <div class="controls_buttons">
+      <% if can? :create, Snippet %>
+        <%= link_to('Edit Snippet', edit_snippet_path(snippet))  %>
+      <% end %> 
+      - 
+      <%= link_to('Comment Snippet', new_comment_path(snippet_id: snippet.id)) %>
+      <%= link_to('Delete Snippet', snippet, :method => :delete, :confirm => 'Are you sure?') %>
+      </div>
+  </div>
+</li>

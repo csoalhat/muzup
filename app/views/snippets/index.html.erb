@@ -1,0 +1,12 @@
+
+<% @snippets.each do |snippet| %>
+<dl class="dl-horizontal">
+  <dt><%= snippet.title %></dt>
+  <dd><%= snippet.description %> <%= snippet.user.profile.name %>
+  </dd>
+<% end %>
+<% if can?(:manage?, :all) %>
+<%= link_to('Delete Snippet', snippet, :method => :delete, :confirm => 'Are you sure?') %>
+<% end %>
+</dl>
+

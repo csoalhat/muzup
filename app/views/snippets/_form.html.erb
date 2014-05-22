@@ -1,0 +1,34 @@
+
+<%= form_for @snippet, html: {multipart: true} do |f| %>
+  <div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  </div>
+  <div class="field">
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  </div>
+  <div class="field">
+  <%= f.label :song %>
+  <%= collection_select(:snippet,
+      :song_id,
+      Song.all,
+      :id,
+      :title,
+      {:include_blank => 'Please select'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :song_title %>
+    <%= text_field_tag "song[title]" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :song_file %>
+    <%= file_field_tag "song[file]" %>
+  </div>
+  <p>
+    <div class="actions">
+    <%= f.submit :class => :button %>
+    </div>
+  </p>
+<% end %>

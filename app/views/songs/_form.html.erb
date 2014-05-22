@@ -1,0 +1,17 @@
+  <%= form_for @song do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :file, 'Song File'%>
+    <%= f.file_field :file %>
+  </div>
+  <div class="actions">
+    <p>
+    <%= f.submit :class => :button %>
+   </p>
+  </div>
+
+  <% end %>
+ 
