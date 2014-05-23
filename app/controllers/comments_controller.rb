@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(params[:comment])
     if @comment.save
-      redirect_to profile_path(@comment.snippet.user.profile)
+      redirect_to profile_path(current_user.profile)
     else
       render :new
     end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update_attributes(params[:comment])
-    redirect_to profile_path(@comment.snippet.user.profile)
+    redirect_to profile_path(current_user.profile)
   end
 
   def destroy

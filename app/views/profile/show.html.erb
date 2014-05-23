@@ -1,7 +1,3 @@
-<style>
-  <%#= @profile.style%>
-</style>
-
 <div class="profile" style="border: 1px solid white
 ">
   <div class="row">
@@ -16,32 +12,32 @@
               <div class="col-md-9">
                 <div class="profile_title">
                   
-              </div>
-            </div>
+               </div>
+             </div>
               
-            <div class="row">
-              <div class="col-md-6">
-                <%= image_tag(@profile.photo, width: '140') %>
-            </div>
-            <div class="col-md-6">
-              <div style="font-size:18px">
-               <%= @profile.name %>, <%= @profile.city %>
-              </div>
-                <% if @profile.inspirations.present? %>
-                <h5>Inspiration:</h5>
-                <%= @profile.inspirations %>
-                <% end %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= image_tag(@profile.photo, width: '140') %>
+        </div>
+        <div class="col-md-6">
+          <div style="font-size:18px">
+           <%= @profile.name %>, <%= @profile.city %>
+          </div>
+            <% if @profile.inspirations.present? %>
+            <h5>Inspiration:</h5>
+              <%= @profile.inspirations %>
+              <% end %>
               </br>
-                <% if @profile.instruments? %>
-                <h5>Instruments:</h5>
-                <%= @profile.instruments %>
-                <% end %>
+              <% if @profile.instruments? %>
+              <h5>Instruments:</h5>
+              <%= @profile.instruments %>
+              <% end %>
             </div>
           </div>
-        </div>
-        </div>
-    </div>
-  </div>
+      </div>
+   </div>
+ </div>
+</div>
   <div class="row">
     <div class="col-md-12">
       <div class="profile_bottom">
@@ -56,7 +52,7 @@
       </div>
     <div>
   </div>
-<div>
+</div>
 
 
 

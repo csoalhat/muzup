@@ -32,33 +32,33 @@
   </div>
 
   </div>
-      <div>
-        <div class="col-md-12">
-    <div class="comments">
-      <% if snippet.comments.present? %>
-      <h4>Comments</h4>
-        <% snippet.comments.each do |comment| %>
-          <%= comment.text %>
-        </br>
-          <%= link_to(comment.user.profile.name, profile_path(comment.user.profile)) %>
-              <% if can? :destroy, Comment %>
-                  <%= link_to('Delete Comment', comment, :method => :delete, :confirm => 'Are you sure?') %>
+    <div>
+      <div class="col-md-12">
+        <div class="comments">
+          <% if snippet.comments.present? %>
+          <h4>Comments</h4>
+            <% snippet.comments.each do |comment| %>
+              <%= comment.text %>
+            </br>
+              <%= link_to(comment.user.profile.name, profile_path(comment.user.profile)) %>
+                  <% if can? :destroy, Comment %>
+                    <%= link_to('Delete Comment', comment, :method => :delete, :confirm => 'Are you sure?') %>
+                <% end %>
               <% end %>
-        <% end %>
-      </br>
+             </br>
+            <% end %>
+          </div>
+        </div>
       <% end %>
+     </div>
     </div>
-  </div>
-    <% end %>
-  </div>
-  </div>
   
   
   <div class="col-md-12">
       <div class="controls_buttons">
-      <% if can? :update, Snippet %>
+       <% if can? :update, Snippet %>
         <%= link_to('Edit Snippet - ', edit_snippet_path(snippet))  %>
-      <% end %> 
+       <% end %> 
       <%= link_to('Comment Snippet', new_comment_path(snippet_id: snippet.id)) %>
       <%= link_to(' - Delete Snippet', snippet, :method => :delete, :confirm => 'Are you sure?') %>
       </div>
