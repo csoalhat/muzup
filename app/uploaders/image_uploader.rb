@@ -32,7 +32,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #process :scale => [200, 300]
   #
   def scale(width, height)
-    process :scale => [160, 190]
+    process :scale => [140, 160]
   end
 
   # Create different versions of your uploaded files:

@@ -1,5 +1,5 @@
 Muzup::Application.routes.draw do
-  root :to => 'snippets#index'
+  root :to => 'users#index'
   resources :snippets
   resources :songs
   resources :comments
@@ -10,7 +10,13 @@ Muzup::Application.routes.draw do
     collection do 
       get :edit
     end
+
+    collection do
+  match "search", to: "snippets#search", via: [:get, :post], as: :search
+end
   end
+
+
 
   get "/login", to: "sessions#new"
 

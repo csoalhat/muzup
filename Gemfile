@@ -29,6 +29,7 @@ gem 'cancan'
 gem "fog", "~> 1.3.1"
 gem 'less-rails-bootstrap'
 gem 'therubyracer'
+gem "will_paginate", '~> 3.0'
 
 group :development, :test do
   gem 'pry-rails'

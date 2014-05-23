@@ -1,9 +1,23 @@
 class SnippetsController < ApplicationController
   before_filter :authenticate, :only => [:new, :create]
 
-  def index
-    @snippets = Snippet.all
+def perform_search
+    page = params[:page].try(:to_i) || 1
+    per_page = params[:per_page].try(:to_i) || 5 
+
+    @q = Snippet.search(params[:q])
+    @snippets = @q.result(distinct: true).page(page).per_page(per_page)
   end
+
+
+  def index
+    perform_search
+  end
+
+  def search 
+    index
+    render :index 
+    end
 
   def show
     @snippet = Snippet.find(params[:id])
@@ -19,7 +33,7 @@ class SnippetsController < ApplicationController
     @snippet.song = song
     if @snippet.save
       flash[:notice] = "Created Snippet"
-      redirect_to @profile
+      redirect_to profile_path(current_user.profile)
     else
       flash[:notice] = "An error occured"
       render :new
@@ -36,15 +50,14 @@ class SnippetsController < ApplicationController
     snippet = Snippet.find(params[:id])
     authorize! :update, @snippet 
     snippet.update_attributes(params[:snippet])
-    redirect_to @profile
+    redirect_to profile_path(current_user.profile)
   end
 
   def destroy
     snippet = Snippet.find(params[:id])
-    authorize! :destroy, @snippet 
+    authorize! :destroy, snippet 
     snippet.delete
-    redirect_to root_path
+    redirect_to profile_path(current_user.profile)
   end
-
 
 end

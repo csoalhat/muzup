@@ -1,3 +1,7 @@
+<style>
+  <%#= @profile.style%>
+</style>
+
 <div class="profile" style="border: 1px solid white
 ">
   <div class="row">
@@ -17,17 +21,20 @@
               
             <div class="row">
               <div class="col-md-6">
-                <%= image_tag(current_user.profile.photo, width: '160') %>
+                <%= image_tag(@profile.photo, width: '140') %>
             </div>
             <div class="col-md-6">
+              <div style="font-size:18px">
                <%= @profile.name %>, <%= @profile.city %>
-                <% if current_user.profile.inspirations.present? %>
+              </div>
+                <% if @profile.inspirations.present? %>
                 <h5>Inspiration:</h5>
-                <%= current_user.profile.inspirations %>
+                <%= @profile.inspirations %>
                 <% end %>
-                <% if current_user.profile.instruments? %>
+              </br>
+                <% if @profile.instruments? %>
                 <h5>Instruments:</h5>
-                <%= current_user.profile.instruments %>
+                <%= @profile.instruments %>
                 <% end %>
             </div>
           </div>
@@ -43,7 +50,7 @@
             <h3 class="snippets">Snippets</h3>
           </div>
           <ul class="snippets-list">
-            <%= render current_user.snippets %>
+            <%= render @profile.user.snippets %>
           </ul>
         </div>
       </div>

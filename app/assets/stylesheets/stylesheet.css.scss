@@ -248,7 +248,7 @@ body {
 .controls_buttons {
   margin-top: 20px;
   font-size: 10px;
-  float: right;
+  
 }
 
 audio {
@@ -256,7 +256,7 @@ audio {
 }
 
 .song_align {
-  float: right;
+  
   margin-top: 20px;
 }
 
@@ -264,26 +264,27 @@ audio {
 
 .snippets-list{
   list-style-type: none;
-  margin-top: 40px;
+  margin-top: 10px;
   float: left;
 }
 
 .snippets-list li{
   width: 100%;
   border: 2px white solid;
-  margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   float: left;
+  margin-bottom: 25px;
 }
 
 .comments {
-  width: 100%;
-  border: 2px white solid;
+  
+  border: 1px white solid;
   margin-top: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  float: left;
+  background-color: rgba(0,0,0,.3);
+  border-radius: 5px;
+  margin-bottom: 25px;
+  
 }
 
 

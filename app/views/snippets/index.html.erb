@@ -1,12 +1,48 @@
+  <div style="margin-left: 20px; width: 400px;">
+    <%= search_form_for @q, url: search_profile_index_path, html: { method: :post } do |f| %>
+       <div class="col-md-12">
+          <%= f.label :Search, class:'col-sm-2 control-label' %>
+           <div class="col-md-12">
+          <%= f.text_field :title_or_description_cont, class: "form-control", id: "inputEmail3", placeholder: "Search Keyword" %>
 
-<% @snippets.each do |snippet| %>
-<dl class="dl-horizontal">
-  <dt><%= snippet.title %></dt>
-  <dd><%= snippet.description %> <%= snippet.user.profile.name %>
-  </dd>
-<% end %>
-<% if can?(:manage?, :all) %>
-<%= link_to('Delete Snippet', snippet, :method => :delete, :confirm => 'Are you sure?') %>
-<% end %>
-</dl>
+          </div>
+      </div>
+    <%= f.submit 'submit', class: "btn btn-default" %>
+   <% end %>
+  </div>
 
+
+
+
+
+<div style="border: 1px solid white; padding: 10px; border-radius:10px; text-align:left">
+  <div class="row">
+    <div class="col-md-12"><% @snippets.each do |snippet| %>
+        <dl class="dl-horizontal">
+            <div style="border: 1px solid white; padding: 10px; border-radius:10px; text-align:left; margin-bottom: 10px">
+              <dt><h4>Title: </h4><%= snippet.title %></dt>
+              <dd><h4>Description: </h4><%= snippet.description %> 
+              </br>
+              <%= link_to(snippet.user.profile.name, profile_path(snippet.user.profile)) %>
+              </dd>
+        <div class="row">
+          <div class="col-md-12">
+              <audio controls="controls">
+                Your browser does not support the <code>audio</code> element.
+                <source src="<%= snippet.song.file %>" type="audio/wav">
+              </audio>
+          </div>
+        </div>
+        
+              <% if can?(:manage?, :all) %>
+            <%= link_to('Delete Snippet', snippet, :method => :delete, :confirm => 'Are you sure?') %>
+            <% end %>
+            </div>
+          <% end %>
+        </dl>
+    </div>
+  </div>
+</div>
+
+
+<%= will_paginate @snippets %>
