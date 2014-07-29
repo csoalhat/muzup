@@ -1,2 +1,3 @@
-Description: Muzup is a social music sharing website. Users can create profiles, upload songs, videos and pictures that they can share with their friends and comment.
+Description: Muzup is a social music sharing website. Users can create profiles, upload songs, videos and pictures that they can share with their friends and comment.  
+
 Technology: Ruby on Rails, HTML, CSS, model associations and SQLlite. File uplaod using CarrierWave and Amazon S3. Authorisation using Cancan. Search with Ransack. 
